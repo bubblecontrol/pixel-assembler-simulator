@@ -54,10 +54,28 @@
                         <h4 class="panel-title">Output</h4>
                     </div>
                     <div class="panel-body source-code">
+                        <p class="text-muted">Character array (24 characters, 1 byte/char)</p>
                         <div style="float:left;" class="output"
                              ng-repeat="m in memory.data | startFrom: outputStartIndex track by $index">
                             <span>{{ getChar(m) }}</span>
                         </div>
+                    </div>
+                    
+                    <div class="panel-body source-code" style="padding-top:0; padding-bottom:0;">
+                        <p class="text-muted">Pixel array (8 pixels, 3 bytes/pixel)</p>
+                        <div style="float:left; width:2em; background-color:rgb({{memory.data[$index+232]}},{{memory.data[$index+233]}},{{memory.data[$index+234]}});" class="output"
+                            ng-repeat="item in memory.data | startFrom: outputStartIndex track by $index"
+                            ng-if="$index % 3 === 0 && $index < 12">
+                        <span style="color:white; width:2em;">&nbsp;</span>
+                        </div>
+                   </div>
+
+                    <div class="panel-body source-code" style="padding-top:0;">
+                        <div style="float:left; width:2em; background-color:rgb({{memory.data[$index+232]}},{{memory.data[$index+233]}},{{memory.data[$index+234]}});" class="output"
+                            ng-repeat="item in memory.data | startFrom: outputStartIndex track by $index"
+                            ng-if="$index % 3 === 0 && $index >= 12">
+                        <span style="color:white; width:2em;">&nbsp;</span>
+                        </div>                   
                     </div>
                 </div>
                 <div class="panel panel-default">
